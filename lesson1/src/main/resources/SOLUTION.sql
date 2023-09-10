@@ -1,20 +1,20 @@
-create database university;
+create schema university;
 create table Student(
                         id bigint Primary key,
-                        name_ varchar(100),
+                        name varchar(100),
                         birthday date,
-                        group_ int);
+                        group int);
 
 create table Subject(
                         id bigint Primary key,
-                        name_ varchar(100),
+                        name varchar(100),
                         description varchar(150),
                         grade int
 );
 
 create table PaymentType(
                             id bigint primary key,
-                            name_ varchar(100)
+                            name varchar(100)
 );
 
 create table Payment(

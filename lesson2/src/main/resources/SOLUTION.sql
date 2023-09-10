@@ -1,4 +1,4 @@
-insert into Student(id,name_,group_) values
+insert into Student(id,name,group) values
                                          (12234,"John",1),
                                          (12235,"Chris", 1),
                                          (12236,"Carl", 1),
@@ -13,7 +13,7 @@ insert into Student(id,name_,group_) values
                                          (12345,"Martin", 5),
                                          (12346,"Gregory", 5);
 
-insert into Subject(id,name_, grade) values
+insert into Subject(id,name, grade) values
                                          (1,"Art",1),
                                          (2,"Music",1),
                                          (3,"Geography",2),
@@ -25,7 +25,7 @@ insert into Subject(id,name_, grade) values
                                          (9,"Biology",5),
                                          (10,"Chemie",5);
 
-insert into paymenttype(id,name_) values
+insert into paymenttype(id,name) values
                                       (1,"DAILY"), (2,"WEEKLY"), (3,"MONTHLY");
 
 insert into Payment(type_id,student_id) values
