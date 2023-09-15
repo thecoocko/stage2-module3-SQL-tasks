@@ -1,7 +1,5 @@
-select * from (payment join paymenttype on payment.type_id = paymenttype.id) where paymenttype.name = 'MONTHLY';
+SELECT pt.* FROM Payment AS p JOIN PaymentType AS pt ON pt.id = p.type_id WHERE pt.name = 'MONTHLY';
+SELECT m.* FROM Mark AS m JOIN Subject AS s ON s.id = m.subject_id WHERE s.name = 'Art';
+SELECT st.* FROM Student AS st JOIN Payment AS p ON p.student_id = st.id JOIN PaymentType AS pt ON pt.id = p.type_id WHERE pt.name = 'WEEKLY';
+SELECT st.* FROM Student AS st JOIN Mark AS m ON st.id = m.student_id JOIN Subject AS sb ON sb.id = m.subject_id WHERE sb.name = 'Math';
 
-select * from (subject inner join mark on subject.id = mark.id) where subject.name = 'Art';
-
-select st.* from student as st join payment as p on st.id = p.student_id join paymenttype as pt on p.type_id = pt.id where pt.name = 'WEEKLY';
-
-select * from (student right join mark on student.id = mark.student_id) join subject on subject.id = mark.subject_id where subject.name = 'Math';
