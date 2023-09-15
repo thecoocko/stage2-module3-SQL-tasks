@@ -1,3 +1,4 @@
-SELECT * FROM subject INNER JOIN (SELECT mark.subject_id, AVG(mark.mark) AS subavg FROM mark GROUP BY mark.subject_id) AS avgtemptable ON subject.id = avgtemptable.subject_id WHERE avgtemptable.subavg > (SELECT AVG(mark.mark) FROM mark);
+SELECT s.*, AVG(m.mark) FROM Subject AS s INNER JOIN Mark AS m ON m.subject_id = s.id GROUP BY s.id HAVING AVG(m.mark) > (SELECT AVG(mark) FROM Mark);
 
-SELECT * FROM student INNER JOIN payment ON student.id = payment.student_id WHERE payment.amount < (SELECT AVG(payment.amount) FROM payment);
+SELECT s.*, SUM(p.amount) AS paid FROM Student AS s INNER JOIN Payment AS p ON s.id = p.student_id GROUP BY s.id HAVING SUM(p.amount) < (SELECT AVG(amount) FROM Payment);
+
