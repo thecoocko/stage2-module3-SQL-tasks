@@ -1,14 +1,7 @@
-DELETE FROM mark WHERE student_id IN (    SELECT student_id    FROM student    WHERE groupnumber > 4    );
-
-DELETE FROM payment WHERE student_id IN (    SELECT student_id    FROM student    WHERE groupnumber > 4    );
-
-DELETE FROM student WHERE groupnumber > 4;
-
-DELETE FROM student WHERE id IN (    SELECT DISTINCT student.id    FROM student JOIN mark ON student.id = mark.student_id WHERE mark < 4);
-
-DELETE FROM payment WHERE id IN (    SELECT id    FROM paymenttype    WHERE name = 'DAILY');
-
-DELETE FROM paymenttype WHERE name = 'DAILY';
-
-DELETE FROM mark WHERE mark < 7;
-
+DELETE FROM Student WHERE id IN (    SELECT student_id FROM mark WHERE mark >= 4    );
+DELETE FROM Payment WHERE student_id IN (    SELECT student_id FROM mark WHERE mark >= 4    );
+DELETE FROM Mark  WHERE mark >= 4;
+DELETE FROM Student WHERE id IN (    SELECT student_id FROM mark WHERE mark < 4    );
+DELETE FROM Payment WHERE type_id = (    SELECT id FROM PaymentType WHERE name = 'DAILY'    );
+DELETE FROM PaymentType WHERE name = 'DAILY';
+DELETE FROM Mark WHERE mark < 7;
