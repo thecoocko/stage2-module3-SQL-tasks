@@ -1,37 +1,47 @@
-create schema university;
-create table Student(
-                        id bigint Primary key,
-                        name varchar(100),
-                        birthday date,
-                        group int);
-
-create table Subject(
-                        id bigint Primary key,
-                        name varchar(100),
-                        description varchar(150),
-                        grade int
+CREATE TABLE Student
+(
+    id bigint NOT NULL UNIQUE AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    birthday date,
+    groupnumber int NOT NULL,
+    PRIMARY KEY (id)
 );
 
-create table PaymentType(
-                            id bigint primary key,
-                            name varchar(100)
+CREATE TABLE Subject
+(
+    id bigint NOT NULL UNIQUE AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    description varchar(255),
+    grade int,
+    PRIMARY KEY (id)
 );
 
-create table Payment(
-                        id bigint primary key,
-                        type_id bigint,
-                        foreign key (type_id) references PaymentType(id),
-                        amount decimal,
-                        student_id bigint,
-                        payment_date datetime,
-                        foreign key (student_id) references Student(id)
+CREATE TABLE PaymentType
+(
+    id bigint NOT NULL UNIQUE AUTO_INCREMENT,
+    name varchar(255),
+    PRIMARY KEY (id)
 );
 
-create table Mark(
-                     id bigint primary key,
-                     student_id bigint,
-                     subject_id bigint,
-                     mark int,
-                     foreign key (student_id) references Student(id),
-                     foreign key (subject_id) references Subject(id)
+CREATE TABLE Payment
+(
+    id bigint NOT NULL UNIQUE AUTO_INCREMENT,
+    type_id bigint,
+    amount decimal,
+    student_id bigint NOT NULL,
+    payment_date datetime,
+    PRIMARY KEY (id),
+    FOREIGN KEY (student_id) REFERENCES Student (id),
+    FOREIGN KEY (type_id) REFERENCES PaymentType (id)
+);
+
+CREATE TABLE Mark
+(
+    id bigint NOT NULL UNIQUE AUTO_INCREMENT,
+    student_id bigint,
+    subject_id bigint,
+    mark int  NOT NULL,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (student_id) REFERENCES Student (id),
+    FOREIGN KEY (subject_id) REFERENCES Subject (id)
 );
